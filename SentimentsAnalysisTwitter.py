@@ -47,8 +47,8 @@ def calculateSentiment(line,outputFile):
     score=0
     tweet_json = json.loads(line)
 
-    # only accept records with a 'text' field
-    if tweet_json.get('text'):
+    # only accept records with a 'text' field and with english language
+    if tweet_json.get('text') and tweet_json.get('lang')=='en':
         tweet_text = tweet_json['text'].encode('utf8').split()
         for word in tweet_text:
             # only read alphanumeric words
